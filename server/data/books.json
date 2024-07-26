@@ -1,0 +1,42 @@
+[
+	{
+		"id": 1,
+		"title": "To Kill a Mockingbird",
+		"author": "Harper Lee",
+		"borrowedBy": null,
+		"dueDate": null,
+		"image": "https://id.pinterest.com/pin/685321268310062665/"
+	},
+	{
+		"id": 2,
+		"title": "1984",
+		"author": "George Orwell",
+		"borrowedBy": null,
+		"dueDate": null,
+		"image": "https://id.pinterest.com/pin/139822763424630082/"
+	},
+	{
+		"id": 3,
+		"title": "Pride and Prejudice",
+		"author": "Jane Austen",
+		"borrowedBy": null,
+		"dueDate": null,
+		"image": "https://id.pinterest.com/pin/401031541796557821/"
+	},
+	{
+		"id": 4,
+		"title": "The Great Gatsby",
+		"author": "F. Scott Fitzgerald",
+		"borrowedBy": null,
+		"dueDate": null,
+		"image": "https://id.pinterest.com/pin/594053007131422773/"
+	},
+	{
+		"id": 5,
+		"title": "Moby Dick",
+		"author": "Herman Melville",
+		"borrowedBy": null,
+		"dueDate": null,
+		"image": "https://id.pinterest.com/pin/350084571050163910/"
+	}
+]
