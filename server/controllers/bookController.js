@@ -12,6 +12,28 @@ class BookController {
     }
   }
 
+  static async getAllByUserid(req, res, next) {
+    try {
+      const { id } = req.params;
+
+      const data = await Borrow.findAll({
+        where: {
+          userId: id,
+        },
+        include: [
+          {
+            model: Book,
+            attributes: ["title", "author", "image"],
+          },
+        ],
+      });
+
+      res.status(200).json(data);
+    } catch (error) {
+      next(error);
+    }
+  }
+
   static async borrowBook(req, res, next) {
     const { userId, bookId } = req.body;
 

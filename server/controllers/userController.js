@@ -1,18 +1,18 @@
-const { User } = require("../models");
+const { User, Borrow, Book } = require("../models");
 const { signToken } = require("../helpers/jwt");
 const { comparePassword, hashPassword } = require("../helpers/bcrypt");
 class UserController {
   static async register(req, res, next) {
     const { email, password, role } = req.body;
 
-    // Validasi email domain
+    // Validation email domain
     const validDomains = ["gmail.com", "hotmail.com", "yahoo.com"];
     const domain = email.split("@")[1];
     if (!validDomains.includes(domain)) {
       return res.status(400).json({ message: "Invalid email domain" });
     }
 
-    // Validasi password
+    // Validation password
     if (password.length < 8 || password.length > 64) {
       return res
         .status(400)
@@ -50,7 +50,7 @@ class UserController {
         .status(201)
         .json({ id: newUser.id, email: newUser.email, role: newUser.role });
     } catch (error) {
-        next(error)
+      next(error);
     }
   }
 
@@ -75,8 +75,41 @@ class UserController {
         throw { name: "Unauthorized", message: "Invalid email/password" };
       }
 
-      const access_token = signToken({ id: user.id });
-      res.status(200).json({ access_token, id: user.id });
+      const access_token = signToken({ id: user.id, role: user.role });
+      res.status(200).json({ access_token, id: user.id, role: user.role });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async getUsers(req, res, next) {
+    try {
+      const users = await User.findAll({
+        include: [
+          {
+            model: Borrow,
+            attributes: ["bookId", "returnedAt"], 
+            include: [
+              {
+                model: Book,
+                attributes: ["title"], 
+              },
+            ],
+          },
+        ],
+      });
+
+      const userData = users.map((user) => {
+        return {
+          email: user.email,
+          borrows: user.Borrows.map((borrow) => ({
+            bookTitle: borrow.Book.title,
+            returnedAt: borrow.returnedAt ? "Sudah Kembali" : "Belum Kembali",
+          })),
+        };
+      });
+
+      res.json(userData);
     } catch (error) {
       next(error);
     }

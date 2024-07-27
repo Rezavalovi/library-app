@@ -8,7 +8,7 @@ const errorHandler = (error, req, res, next) => {
       break;
     case "Unauthorized":
       status = 401;
-      sendError(res, 401, "Unauthorized");
+      sendError(res, 401, "Invalid Email/Password",);
       break;
     case "SequelizeValidationError":
     case "SequelizeUniqueConstraintError":

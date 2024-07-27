@@ -5,7 +5,7 @@ const authentication = require("../middlewares/authentication");
 const router = express.Router();
 
 // Route untuk mendapatkan semua buku
-router.get("/books", authentication, BookController.getAllBook);
+router.get("/books", BookController.getAllBook);
 
 // Route untuk memeriksa keterlambatan pengembalian buku
 router.get(
@@ -13,6 +13,8 @@ router.get(
   authentication,
   BookController.checkLateReturn,
 );
+
+router.get("/borrow/:id", authentication, BookController.getAllByUserid);
 
 // Route untuk meminjam buku
 router.post("/borrow", authentication, BookController.borrowBook);

@@ -20,9 +20,10 @@ module.exports = async function authenticate(req, res, next) {
     if (!user) {
       throw { name: "InvalidToken" };
     }
-
+    
     req.user = {
       id: user.id,
+      role: user.role
     };
     next();
   } catch (error) {
