@@ -48,7 +48,10 @@ Pastikan Anda telah menginstal Node.js dan npm di sistem Anda.
 
 ## Penggunaan
 
-1. Buka browser dan akses `http://localhost:3000` untuk melihat aplikasi.
+- Buka browser dan akses http://localhost:3000 untuk membuka aplikasi frontend.
+- Daftarkan akun atau login jika sudah memiliki akun.
+- Sebagai admin, Anda dapat melihat daftar buku yang sedang dipinjam dan terlambat dikembalikan.
+- Sebagai pengguna, Anda dapat meminjam buku dan mengembalikannya.
 
 ## Teknologi yang Digunakan
 
@@ -56,9 +59,5 @@ Pastikan Anda telah menginstal Node.js dan npm di sistem Anda.
 - **Backend:** Node.js, Express.js, PostgreSQL
 - **HTTP Client:** Axios
 
-## Penggunaan
-- Buka browser dan akses http://localhost:3000 untuk membuka aplikasi frontend.
-- Daftarkan akun atau login jika sudah memiliki akun.
-- Sebagai admin, Anda dapat melihat daftar buku yang sedang dipinjam dan terlambat dikembalikan.
-- Sebagai pengguna, Anda dapat meminjam buku dan mengembalikannya.
+
 
